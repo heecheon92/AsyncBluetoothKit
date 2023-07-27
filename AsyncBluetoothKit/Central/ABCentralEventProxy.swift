@@ -8,7 +8,7 @@
 import Foundation
 import CoreBluetooth
 
-final class ABCentralEventProxy: NSObject {
+final class ABCentralEventProxy: NSObject, @unchecked Sendable {
     
     private let manager: CBCentralManager
     private var _stateStream: ABCentralStateStream
@@ -31,6 +31,7 @@ final class ABCentralEventProxy: NSObject {
 
 extension ABCentralEventProxy: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        TestLog("\(central.state.stringDescription)")
         _stateStream.continuation?.yield(central.state)
     }
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {}

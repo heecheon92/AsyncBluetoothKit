@@ -8,31 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		4BE09BDA2A7201B200029C33 /* AsyncBluetoothKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = 4BE09BD92A7201B200029C33 /* AsyncBluetoothKit.docc */; };
-		4BE09BE02A7201B200029C33 /* AsyncBluetoothKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE09BD52A7201B200029C33 /* AsyncBluetoothKit.framework */; };
-		4BE09BE52A7201B200029C33 /* AsyncBluetoothKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE09BE42A7201B200029C33 /* AsyncBluetoothKitTests.swift */; };
 		4BE09BE62A7201B200029C33 /* AsyncBluetoothKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BE09BD82A7201B200029C33 /* AsyncBluetoothKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4BE09BF22A7204B300029C33 /* ABCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE09BF12A7204B300029C33 /* ABCentralManager.swift */; };
 		4BE09BF42A720A7200029C33 /* ABCentralEventProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE09BF32A720A7200029C33 /* ABCentralEventProxy.swift */; };
+		4BE09C222A723C8900029C33 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE09C212A723C8900029C33 /* Utility.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		4BE09BE12A7201B200029C33 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4BE09BCC2A7201B200029C33 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4BE09BD42A7201B200029C33;
-			remoteInfo = AsyncBluetoothKit;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4BE09BD52A7201B200029C33 /* AsyncBluetoothKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AsyncBluetoothKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BE09BD82A7201B200029C33 /* AsyncBluetoothKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsyncBluetoothKit.h; sourceTree = "<group>"; };
 		4BE09BD92A7201B200029C33 /* AsyncBluetoothKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = AsyncBluetoothKit.docc; sourceTree = "<group>"; };
-		4BE09BDF2A7201B200029C33 /* AsyncBluetoothKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AsyncBluetoothKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BE09BE42A7201B200029C33 /* AsyncBluetoothKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncBluetoothKitTests.swift; sourceTree = "<group>"; };
 		4BE09BF12A7204B300029C33 /* ABCentralManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABCentralManager.swift; sourceTree = "<group>"; };
 		4BE09BF32A720A7200029C33 /* ABCentralEventProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABCentralEventProxy.swift; sourceTree = "<group>"; };
+		4BE09C212A723C8900029C33 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,14 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4BE09BDC2A7201B200029C33 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4BE09BE02A7201B200029C33 /* AsyncBluetoothKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +48,6 @@
 			isa = PBXGroup;
 			children = (
 				4BE09BD52A7201B200029C33 /* AsyncBluetoothKit.framework */,
-				4BE09BDF2A7201B200029C33 /* AsyncBluetoothKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,6 +55,7 @@
 		4BE09BD72A7201B200029C33 /* AsyncBluetoothKit */ = {
 			isa = PBXGroup;
 			children = (
+				4BE09C202A723C7800029C33 /* Util */,
 				4BE09BF02A72048100029C33 /* Central */,
 				4BE09BD82A7201B200029C33 /* AsyncBluetoothKit.h */,
 				4BE09BD92A7201B200029C33 /* AsyncBluetoothKit.docc */,
@@ -97,6 +78,14 @@
 				4BE09BF32A720A7200029C33 /* ABCentralEventProxy.swift */,
 			);
 			path = Central;
+			sourceTree = "<group>";
+		};
+		4BE09C202A723C7800029C33 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				4BE09C212A723C8900029C33 /* Utility.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,24 +120,6 @@
 			productReference = 4BE09BD52A7201B200029C33 /* AsyncBluetoothKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		4BE09BDE2A7201B200029C33 /* AsyncBluetoothKitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4BE09BEC2A7201B200029C33 /* Build configuration list for PBXNativeTarget "AsyncBluetoothKitTests" */;
-			buildPhases = (
-				4BE09BDB2A7201B200029C33 /* Sources */,
-				4BE09BDC2A7201B200029C33 /* Frameworks */,
-				4BE09BDD2A7201B200029C33 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4BE09BE22A7201B200029C33 /* PBXTargetDependency */,
-			);
-			name = AsyncBluetoothKitTests;
-			productName = AsyncBluetoothKitTests;
-			productReference = 4BE09BDF2A7201B200029C33 /* AsyncBluetoothKitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -160,9 +131,6 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					4BE09BD42A7201B200029C33 = {
-						CreatedOnToolsVersion = 14.3.1;
-					};
-					4BE09BDE2A7201B200029C33 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
@@ -181,20 +149,12 @@
 			projectRoot = "";
 			targets = (
 				4BE09BD42A7201B200029C33 /* AsyncBluetoothKit */,
-				4BE09BDE2A7201B200029C33 /* AsyncBluetoothKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4BE09BD32A7201B200029C33 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4BE09BDD2A7201B200029C33 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -208,29 +168,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BE09C222A723C8900029C33 /* Utility.swift in Sources */,
 				4BE09BF22A7204B300029C33 /* ABCentralManager.swift in Sources */,
 				4BE09BF42A720A7200029C33 /* ABCentralEventProxy.swift in Sources */,
 				4BE09BDA2A7201B200029C33 /* AsyncBluetoothKit.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4BE09BDB2A7201B200029C33 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4BE09BE52A7201B200029C33 /* AsyncBluetoothKitTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4BE09BE22A7201B200029C33 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4BE09BD42A7201B200029C33 /* AsyncBluetoothKit */;
-			targetProxy = 4BE09BE12A7201B200029C33 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4BE09BE72A7201B200029C33 /* Debug */ = {
@@ -417,40 +362,6 @@
 			};
 			name = Release;
 		};
-		4BE09BED2A7201B200029C33 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DMFD79A79A;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.heecheonpark.AsyncBluetoothKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		4BE09BEE2A7201B200029C33 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DMFD79A79A;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.heecheonpark.AsyncBluetoothKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -468,15 +379,6 @@
 			buildConfigurations = (
 				4BE09BEA2A7201B200029C33 /* Debug */,
 				4BE09BEB2A7201B200029C33 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4BE09BEC2A7201B200029C33 /* Build configuration list for PBXNativeTarget "AsyncBluetoothKitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4BE09BED2A7201B200029C33 /* Debug */,
-				4BE09BEE2A7201B200029C33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
