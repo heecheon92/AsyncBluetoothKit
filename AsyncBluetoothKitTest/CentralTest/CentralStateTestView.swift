@@ -10,7 +10,12 @@ import AsyncBluetoothKit
 
 struct CentralStateTestView: View {
     
-    @ObservedObject var ble: ABCentralManager
+    /*
+     Wrapping class object into @ObservedObject implicitly makes the object
+     conforms to MainActor, hence, may break fetching data from async stream
+     within task modifier.
+     */
+    let ble: ABCentralManager
     @State private var bleState: ABCentralState = .unknown
     
     var body: some View {
@@ -18,18 +23,14 @@ struct CentralStateTestView: View {
             Text("BLE State: \(bleState.stringDescription)")
         }
         .padding()
-        .onAppear {
-            Task {
-                for await new in ble.stateStream {
-                    bleState = new
-                }
+        ._task {
+            // 왜 poweredOn 에만 iteration이 돌아가는지 파악중....이해가 안되네...
+            // ABCentralManager 안에서도 subscribe 하고 로깅중인데
+            // ABCentralManager 안에서는 정상동작 함...
+            for await new in ble.stateStream {
+                TestLog("\(new.stringDescription)")
+                bleState = new
             }
         }
-        // Not sure why the "bleState = new" is invalid....
-//        ._task {
-//            for await new in await ble.stateStream {
-//                bleState = new
-//            }
-//        }
     }
 }

@@ -29,6 +29,7 @@ struct CentralTestView: View {
                 }, label: { EmptyView() })
             )
             .onChange(of: selection, perform: { sel in if let _ = sel { isActive = true } })
+            .onChange(of: isActive, perform: { if !$0 { selection = nil } })
     }
     
     @ViewBuilder func NavigationCategoryLabel(_ cat: CentralTestCategory) -> some View {
