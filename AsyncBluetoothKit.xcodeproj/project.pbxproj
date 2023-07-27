@@ -11,6 +11,8 @@
 		4BE09BE02A7201B200029C33 /* AsyncBluetoothKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE09BD52A7201B200029C33 /* AsyncBluetoothKit.framework */; };
 		4BE09BE52A7201B200029C33 /* AsyncBluetoothKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE09BE42A7201B200029C33 /* AsyncBluetoothKitTests.swift */; };
 		4BE09BE62A7201B200029C33 /* AsyncBluetoothKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BE09BD82A7201B200029C33 /* AsyncBluetoothKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4BE09BF22A7204B300029C33 /* ABCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE09BF12A7204B300029C33 /* ABCentralManager.swift */; };
+		4BE09BF42A720A7200029C33 /* ABCentralEventProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE09BF32A720A7200029C33 /* ABCentralEventProxy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		4BE09BD92A7201B200029C33 /* AsyncBluetoothKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = AsyncBluetoothKit.docc; sourceTree = "<group>"; };
 		4BE09BDF2A7201B200029C33 /* AsyncBluetoothKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AsyncBluetoothKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BE09BE42A7201B200029C33 /* AsyncBluetoothKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncBluetoothKitTests.swift; sourceTree = "<group>"; };
+		4BE09BF12A7204B300029C33 /* ABCentralManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABCentralManager.swift; sourceTree = "<group>"; };
+		4BE09BF32A720A7200029C33 /* ABCentralEventProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABCentralEventProxy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,7 @@
 		4BE09BD72A7201B200029C33 /* AsyncBluetoothKit */ = {
 			isa = PBXGroup;
 			children = (
+				4BE09BF02A72048100029C33 /* Central */,
 				4BE09BD82A7201B200029C33 /* AsyncBluetoothKit.h */,
 				4BE09BD92A7201B200029C33 /* AsyncBluetoothKit.docc */,
 			);
@@ -83,6 +88,15 @@
 				4BE09BE42A7201B200029C33 /* AsyncBluetoothKitTests.swift */,
 			);
 			path = AsyncBluetoothKitTests;
+			sourceTree = "<group>";
+		};
+		4BE09BF02A72048100029C33 /* Central */ = {
+			isa = PBXGroup;
+			children = (
+				4BE09BF12A7204B300029C33 /* ABCentralManager.swift */,
+				4BE09BF32A720A7200029C33 /* ABCentralEventProxy.swift */,
+			);
+			path = Central;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +208,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BE09BF22A7204B300029C33 /* ABCentralManager.swift in Sources */,
+				4BE09BF42A720A7200029C33 /* ABCentralEventProxy.swift in Sources */,
 				4BE09BDA2A7201B200029C33 /* AsyncBluetoothKit.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,6 +367,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -382,6 +399,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -402,6 +420,7 @@
 		4BE09BED2A7201B200029C33 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DMFD79A79A;
@@ -418,6 +437,7 @@
 		4BE09BEE2A7201B200029C33 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DMFD79A79A;

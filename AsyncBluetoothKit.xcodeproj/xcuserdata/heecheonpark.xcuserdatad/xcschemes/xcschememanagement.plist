@@ -6,8 +6,23 @@
 	<dict>
 		<key>AsyncBluetoothKit.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>4BE09BD42A7201B200029C33</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4BE09BDE2A7201B200029C33</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
