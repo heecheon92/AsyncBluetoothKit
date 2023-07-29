@@ -12,6 +12,9 @@
 		4BE09BF22A7204B300029C33 /* ABCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE09BF12A7204B300029C33 /* ABCentralManager.swift */; };
 		4BE09BF42A720A7200029C33 /* ABCentralEventProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE09BF32A720A7200029C33 /* ABCentralEventProxy.swift */; };
 		4BE09C222A723C8900029C33 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE09C212A723C8900029C33 /* Utility.swift */; };
+		4BE09C402A75427500029C33 /* AsyncStreamTerminationNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE09C3F2A75427500029C33 /* AsyncStreamTerminationNotifier.swift */; };
+		4BE09C422A7543EC00029C33 /* ABCentralStateStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE09C412A7543EC00029C33 /* ABCentralStateStream.swift */; };
+		4BE09C452A7549B700029C33 /* MemoryAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE09C442A7549B700029C33 /* MemoryAddress.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		4BE09BF12A7204B300029C33 /* ABCentralManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABCentralManager.swift; sourceTree = "<group>"; };
 		4BE09BF32A720A7200029C33 /* ABCentralEventProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABCentralEventProxy.swift; sourceTree = "<group>"; };
 		4BE09C212A723C8900029C33 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		4BE09C3F2A75427500029C33 /* AsyncStreamTerminationNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncStreamTerminationNotifier.swift; sourceTree = "<group>"; };
+		4BE09C412A7543EC00029C33 /* ABCentralStateStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABCentralStateStream.swift; sourceTree = "<group>"; };
+		4BE09C442A7549B700029C33 /* MemoryAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryAddress.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +61,8 @@
 		4BE09BD72A7201B200029C33 /* AsyncBluetoothKit */ = {
 			isa = PBXGroup;
 			children = (
+				4BE09C432A7548E900029C33 /* Debug */,
+				4BE09C3E2A75426500029C33 /* Protocol */,
 				4BE09C202A723C7800029C33 /* Util */,
 				4BE09BF02A72048100029C33 /* Central */,
 				4BE09BD82A7201B200029C33 /* AsyncBluetoothKit.h */,
@@ -76,6 +84,7 @@
 			children = (
 				4BE09BF12A7204B300029C33 /* ABCentralManager.swift */,
 				4BE09BF32A720A7200029C33 /* ABCentralEventProxy.swift */,
+				4BE09C412A7543EC00029C33 /* ABCentralStateStream.swift */,
 			);
 			path = Central;
 			sourceTree = "<group>";
@@ -86,6 +95,22 @@
 				4BE09C212A723C8900029C33 /* Utility.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		4BE09C3E2A75426500029C33 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				4BE09C3F2A75427500029C33 /* AsyncStreamTerminationNotifier.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		4BE09C432A7548E900029C33 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				4BE09C442A7549B700029C33 /* MemoryAddress.swift */,
+			);
+			path = Debug;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +196,9 @@
 				4BE09C222A723C8900029C33 /* Utility.swift in Sources */,
 				4BE09BF22A7204B300029C33 /* ABCentralManager.swift in Sources */,
 				4BE09BF42A720A7200029C33 /* ABCentralEventProxy.swift in Sources */,
+				4BE09C452A7549B700029C33 /* MemoryAddress.swift in Sources */,
+				4BE09C402A75427500029C33 /* AsyncStreamTerminationNotifier.swift in Sources */,
+				4BE09C422A7543EC00029C33 /* ABCentralStateStream.swift in Sources */,
 				4BE09BDA2A7201B200029C33 /* AsyncBluetoothKit.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
