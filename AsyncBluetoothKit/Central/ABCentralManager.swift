@@ -31,6 +31,7 @@ public final class ABCentralManager: NSObject, @unchecked Sendable {
     private func monitorCentralState() {
         Task {
             for await newState in proxy.stateStream {
+                TestLog("\(newState.stringDescription)")
                 state = newState
             }
         }
@@ -56,6 +57,16 @@ public extension ABCentralState {
         case .unauthorized: return "unauthorized"
         case .poweredOff:   return "poweredOff"
         case .poweredOn:    return "poweredOn"
+        @unknown default:   return "@unknown default"
+        }
+    }
+}
+
+public extension AsyncStream.Continuation.Termination {
+    var stringDescription: String {
+        switch self {
+        case .finished:     return "finished"
+        case .cancelled:    return "cancelled"
         @unknown default:   return "@unknown default"
         }
     }
