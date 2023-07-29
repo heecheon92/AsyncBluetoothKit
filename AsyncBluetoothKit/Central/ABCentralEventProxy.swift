@@ -11,8 +11,16 @@ import CoreBluetooth
 final class ABCentralEventProxy: NSObject, @unchecked Sendable {
     
     private let manager: CBCentralManager
-    private var _stateStream: ABCentralStateStream
-    public var stateStream: AsyncStream<ABCentralState> { _stateStream.stream }
+    public var stateStream: AsyncStream<ABCentralState> {
+        let stream = ABCentralStateStream { [weak self] id, terminationReason in
+            TestLog("A state stream (\(id) has been terminated. Reason: \(terminationReason.stringDescription)")
+            self?.cancellableStreams[id] = nil
+        }
+        cancellableStreams.updateValue(stream, forKey: stream.id)
+        return stream.stream
+    }
+    
+    private var cancellableStreams: Dictionary<UUID, ABCentralStateStream> = [:]
     
     init(queue: DispatchQueue? = nil,
          configuration: ABCentralConfiguration = ABCentralConfiguration(restoreIdentifier: nil, showDisableAlert: false)) {
@@ -22,7 +30,6 @@ final class ABCentralEventProxy: NSObject, @unchecked Sendable {
             _config.updateValue(rstId, forKey: CBCentralManagerOptionRestoreIdentifierKey)
         }
         _config.updateValue(configuration.showDisableAlert, forKey: CBCentralManagerOptionShowPowerAlertKey)
-        self._stateStream = ABCentralStateStream()
         self.manager = CBCentralManager(delegate: nil, queue: queue, options: _config)
         super.init()
         self.manager.delegate = self
@@ -32,7 +39,9 @@ final class ABCentralEventProxy: NSObject, @unchecked Sendable {
 extension ABCentralEventProxy: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         TestLog("\(central.state.stringDescription)")
-        _stateStream.continuation?.yield(central.state)
+        cancellableStreams.keys.forEach {
+            cancellableStreams[$0]?.continuation?.yield(central.state)
+        }
     }
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {}
     func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {}
@@ -43,12 +52,4 @@ extension ABCentralEventProxy: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {}
 }
 
-struct ABCentralStateStream {
-    private(set) lazy var stream: AsyncStream<ABCentralState> = {
-        AsyncStream(ABCentralState.self,
-                    bufferingPolicy: .bufferingNewest(1)) { (continuation: AsyncStream<ABCentralState>.Continuation) in
-           self.continuation = continuation
-       }
-    }()
-    private(set) var continuation: AsyncStream<ABCentralState>.Continuation?
-}
+
