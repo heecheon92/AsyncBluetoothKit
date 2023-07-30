@@ -11,19 +11,21 @@ import CoreBluetooth
 final class ABCentralEventProxy: NSObject, @unchecked Sendable {
     
     private let manager: CBCentralManager
-    public var stateStream: AsyncStream<ABCentralState> {
+    public var stateStream: ABCentralStateStream.Stream {
         var stream = ABCentralStateStream { [weak self] id, terminationReason in
             TestLog("A state stream (\(id) has been terminated. Reason: \(terminationReason.stringDescription)")
             self?.cancellableStreams[id] = nil
-        }
+        }.loadProperties()
         cancellableStreams.updateValue(stream, forKey: stream.id)
         
         // var stream and cancellableStreams[stream.id] are SEPARATE objects.
         // Accessing lazy property of stream.stream does not lazily initialize
         // the lazy property of cancellableStreams[stream.id]!.stream
-        return cancellableStreams[stream.id]!.stream
+        return stream.stream
     }
     
+    
+//    private var cancellableStreams: Dictionary<UUID, any ABAsyncStream> = [:] <- need to work on this variation.
     private var cancellableStreams: Dictionary<UUID, ABCentralStateStream> = [:]
     
     init(queue: DispatchQueue? = nil,
@@ -54,5 +56,3 @@ extension ABCentralEventProxy: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, connectionEventDidOccur event: CBConnectionEvent, for peripheral: CBPeripheral) {}
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {}
 }
-
-

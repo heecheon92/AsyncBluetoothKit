@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct ABCentralStateStream: Identifiable, AsyncStreamTerminationNotifier {
+struct ABCentralStateStream: Identifiable, ABAsyncStream {
+
     var id = UUID()
     private(set) lazy var stream: AsyncStream<ABCentralState> = {
         AsyncStream(ABCentralState.self,
@@ -34,4 +35,10 @@ struct ABCentralStateStream: Identifiable, AsyncStreamTerminationNotifier {
     }
     
     private(set) var onTermination: ((UUID, AsyncStream<ABCentralState>.Continuation.Termination) -> Void)?
+    
+    func loadProperties() -> ABCentralStateStream {
+        var res = self
+        _ = res.stream  // load the lazy stream thereby setting the continuation property.
+        return res
+    }
 }
