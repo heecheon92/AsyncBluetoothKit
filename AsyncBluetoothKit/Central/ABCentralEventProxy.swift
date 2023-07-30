@@ -12,12 +12,16 @@ final class ABCentralEventProxy: NSObject, @unchecked Sendable {
     
     private let manager: CBCentralManager
     public var stateStream: AsyncStream<ABCentralState> {
-        let stream = ABCentralStateStream { [weak self] id, terminationReason in
+        var stream = ABCentralStateStream { [weak self] id, terminationReason in
             TestLog("A state stream (\(id) has been terminated. Reason: \(terminationReason.stringDescription)")
             self?.cancellableStreams[id] = nil
         }
         cancellableStreams.updateValue(stream, forKey: stream.id)
-        return stream.stream
+        
+        // var stream and cancellableStreams[stream.id] are SEPARATE objects.
+        // Accessing lazy property of stream.stream does not lazily initialize
+        // the lazy property of cancellableStreams[stream.id]!.stream
+        return cancellableStreams[stream.id]!.stream
     }
     
     private var cancellableStreams: Dictionary<UUID, ABCentralStateStream> = [:]
@@ -40,7 +44,11 @@ extension ABCentralEventProxy: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         TestLog("\(central.state.stringDescription)")
         cancellableStreams.keys.forEach {
-            cancellableStreams[$0]?.continuation?.yield(central.state)
+            if let cont = cancellableStreams[$0]?.continuation { cont.yield(central.state) }
+            else {
+                TestLog("cont is null")
+                TestLog("\(String(describing: cancellableStreams[$0]?.stream))")
+            }
         }
     }
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {}

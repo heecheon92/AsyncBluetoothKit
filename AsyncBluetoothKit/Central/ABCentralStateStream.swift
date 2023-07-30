@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ABCentralStateStream: Identifiable, AsyncStreamTerminationNotifier {
+struct ABCentralStateStream: Identifiable, AsyncStreamTerminationNotifier {
     var id = UUID()
     private(set) lazy var stream: AsyncStream<ABCentralState> = {
         AsyncStream(ABCentralState.self,
