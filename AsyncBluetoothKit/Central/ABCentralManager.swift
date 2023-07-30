@@ -38,16 +38,6 @@ public final class ABCentralManager: NSObject, @unchecked Sendable {
     }
 }
 
-public struct ABCentralConfiguration: @unchecked Sendable {
-    public let restoreIdentifier: String?
-    public var showDisableAlert: Bool = false
-    
-    public init(restoreIdentifier: String?, showDisableAlert: Bool) {
-        self.restoreIdentifier = restoreIdentifier
-        self.showDisableAlert = showDisableAlert
-    }
-}
-
 public extension ABCentralState {
     var stringDescription: String {
         switch self {

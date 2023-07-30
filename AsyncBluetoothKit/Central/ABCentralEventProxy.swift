@@ -29,12 +29,7 @@ final class ABCentralEventProxy: NSObject, @unchecked Sendable {
     init(queue: DispatchQueue? = nil,
          configuration: ABCentralConfiguration = ABCentralConfiguration(restoreIdentifier: nil, showDisableAlert: false)) {
         
-        var _config: [String:Any] = [:]
-        if let rstId = configuration.restoreIdentifier {
-            _config.updateValue(rstId, forKey: CBCentralManagerOptionRestoreIdentifierKey)
-        }
-        _config.updateValue(configuration.showDisableAlert, forKey: CBCentralManagerOptionShowPowerAlertKey)
-        self.manager = CBCentralManager(delegate: nil, queue: queue, options: _config)
+        self.manager = CBCentralManager(delegate: nil, queue: queue, options: configuration.options)
         super.init()
         self.manager.delegate = self
     }
