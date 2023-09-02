@@ -16,7 +16,7 @@ enum CentralTestCategory: CaseIterable, Identifiable {
 
 struct CentralTestView: View {
     
-    @StateObject var ble = ABCentralManager()
+    @StateObject var bleService = CentralService.shared
     
     @State private var selection: CentralTestCategory? = nil
     @State private var isActive: Bool = false
@@ -36,7 +36,7 @@ struct CentralTestView: View {
         Button(action: { selection = cat }, label: {
             switch cat {
             case .state:
-                Text("BLE Central 상태 테스트")
+                Text("BLE Central State Test")
             }
         })
     }
@@ -44,7 +44,7 @@ struct CentralTestView: View {
     @ViewBuilder func NavigationCategoryDestination(_ cat: CentralTestCategory) -> some View {
         switch cat {
         case .state:
-            CentralStateTestView(ble: ble)
+            CentralStateTestView()
         }
     }
 }
