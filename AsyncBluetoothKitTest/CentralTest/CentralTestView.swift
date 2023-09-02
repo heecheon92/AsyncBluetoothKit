@@ -12,6 +12,7 @@ enum CentralTestCategory: CaseIterable, Identifiable {
     var id : UUID { UUID() }
     
     case state
+    case scan
 }
 
 struct CentralTestView: View {
@@ -37,6 +38,8 @@ struct CentralTestView: View {
             switch cat {
             case .state:
                 Text("BLE Central State Test")
+            case .scan:
+                Text("BLE Central Scan Test")
             }
         })
     }
@@ -45,6 +48,8 @@ struct CentralTestView: View {
         switch cat {
         case .state:
             CentralStateTestView()
+        case .scan:
+            CentralScanTestView()
         }
     }
 }
