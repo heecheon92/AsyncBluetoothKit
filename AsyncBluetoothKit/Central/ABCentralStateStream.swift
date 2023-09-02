@@ -19,6 +19,7 @@ struct ABCentralStateStream: Identifiable, ABAsyncStream {
             self.continuation?.onTermination = { [this = self] termination in
                 // Capture "self" as immutable "this" to bypass the following error.
                 // Mutable capture of 'inout' parameter 'state' is not allowed in concurrently-executing code
+                TestLog("A state stream (\(this.id) has been terminated. Reason: \(termination.stringDescription)")
                 this.onTermination?(this.id, termination)
             }
         }
