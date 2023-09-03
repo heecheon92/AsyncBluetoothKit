@@ -17,7 +17,10 @@ public struct ABScanResult: @unchecked Sendable {
     public var txPower: Any?            { advertisementData[CBAdvertisementDataTxPowerLevelKey] }
     public var serviceUUIDs: Any?       { advertisementData[CBAdvertisementDataServiceUUIDsKey] }
     public var serviceData: Any?        { advertisementData[CBAdvertisementDataServiceDataKey] }
-    public var manufacturerData: Any?   { advertisementData[CBAdvertisementDataManufacturerDataKey]}
+    public var manufacturerData: Any?   { advertisementData[CBAdvertisementDataManufacturerDataKey] }
+    public var timestamp: Any?          { advertisementData["kCBAdvDataTimestamp"] }
+    public var rxPrimaryPHY: Any?       { advertisementData["kCBAdvDataRxPrimaryPHY"] }
+    public var rxSecondaryPHY: Any?     { advertisementData["kCBAdvDataRxSecondaryPHY"] }
     
     public var overflowServiceUUIDs: Any? {
         if #available(iOS 6.0, *) {
