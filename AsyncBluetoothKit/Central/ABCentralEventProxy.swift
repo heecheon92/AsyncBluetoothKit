@@ -25,6 +25,7 @@ final class ABCentralEventProxy: NSObject, @unchecked Sendable {
     
     private var stateStreams: Dictionary<UUID, ABCentralStateStream> = [:]
     private var scanStreams: Dictionary<UUID, ABScanStream> = [:]
+    private var connectionSet = Set<ABConnectionContinuation>()
     
     init(queue: DispatchQueue? = nil,
          configuration: ABCentralConfiguration = ABCentralConfiguration(restoreIdentifier: nil, showAvailabilityAlert: true)) {
@@ -49,6 +50,19 @@ extension ABCentralEventProxy {
     }
 }
 
+extension ABCentralEventProxy {
+    func connect(peripheral: CBPeripheral,
+                 configuration: ABConnectionConfiguration = ABConnectionConfiguration()) async throws -> CBPeripheral {
+        
+        let connected = try await withCheckedThrowingContinuation { continuation in
+            let connection = ABConnectionContinuation(id: peripheral.identifier, continuation)
+            self.connectionSet.insert(connection)
+            self.manager.connect(peripheral, options: configuration.options)
+        }
+        return connected
+    }
+}
+
 extension ABCentralEventProxy: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         TestLog("\(central.state.stringDescription)")
@@ -59,9 +73,20 @@ extension ABCentralEventProxy: CBCentralManagerDelegate {
             }
         }
     }
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {}
+    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        if let connection = connectionSet.first(where: { $0.id == peripheral.identifier }) {
+            connection.continuation?.resume(returning: peripheral)
+            connectionSet.remove(connection)
+        }
+    }
+    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+        if let error,
+           let connection = connectionSet.first(where: { $0.id == peripheral.identifier }) {
+            connection.continuation?.resume(throwing: error)
+            connectionSet.remove(connection)
+        }
+    }
     func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {}
-    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {}
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {}
     func centralManager(_ central: CBCentralManager, didUpdateANCSAuthorizationFor peripheral: CBPeripheral) {}
     func centralManager(_ central: CBCentralManager, connectionEventDidOccur event: CBConnectionEvent, for peripheral: CBPeripheral) {}

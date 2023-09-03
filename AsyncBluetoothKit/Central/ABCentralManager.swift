@@ -62,3 +62,10 @@ extension ABCentralManager {
         self.proxy.stopScan()
     }
 }
+
+extension ABCentralManager {
+    public func connect(peripheral: CBPeripheral,
+                        configuration: ABConnectionConfiguration = ABConnectionConfiguration()) async throws -> CBPeripheral {
+        return try await self.proxy.connect(peripheral: peripheral, configuration: configuration)
+    }
+}
