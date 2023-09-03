@@ -27,7 +27,7 @@ final class ABCentralEventProxy: NSObject, @unchecked Sendable {
     private var scanStreams: Dictionary<UUID, ABScanStream> = [:]
     
     init(queue: DispatchQueue? = nil,
-         configuration: ABCentralConfiguration = ABCentralConfiguration(restoreIdentifier: nil, showDisableAlert: false)) {
+         configuration: ABCentralConfiguration = ABCentralConfiguration(restoreIdentifier: nil, showAvailabilityAlert: true)) {
         
         self.manager = CBCentralManager(delegate: nil, queue: queue, options: configuration.options)
         super.init()

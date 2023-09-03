@@ -19,11 +19,12 @@ public final class ABCentralManager: NSObject, @unchecked Sendable {
     public var scanStream: AsyncStream<ABScanResult> { proxy.scanStream }
     
     override public convenience init() {
-        self.init(queue: nil, configuration: ABCentralConfiguration(restoreIdentifier: nil, showDisableAlert: false))
+        self.init(queue: nil,
+                  configuration: ABCentralConfiguration(restoreIdentifier: nil, showAvailabilityAlert: true))
     }
     
     public init(queue: DispatchQueue? = nil,
-                configuration: ABCentralConfiguration = ABCentralConfiguration(restoreIdentifier: nil, showDisableAlert: false)) {
+                configuration: ABCentralConfiguration = ABCentralConfiguration(restoreIdentifier: nil, showAvailabilityAlert: true)) {
         
         self.proxy = ABCentralEventProxy(queue: queue, configuration: configuration)
         super.init()
