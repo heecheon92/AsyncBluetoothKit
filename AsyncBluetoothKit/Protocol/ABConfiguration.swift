@@ -56,5 +56,50 @@ public struct ABScanConfiguration: Sendable, ABConfiguration {
         self.solicitedServiceUUIDs = solicitedServiceUUIDsKey
     }
 }
+
+public struct ABConnectionConfiguration: Sendable, ABConfiguration {
+    
+    public let notifyOnConnect: Bool?
+    public let notifyOnDisconnect: Bool?
+    public let notifyOnPeripheralNotification: Bool?
+    public let enableTransportBridging: Bool?
+    public let requireANCS: Bool?
+    public let connectionDelay: NSNumber?
+    
+    public var options: [String: Any] {
+        var config: [String: Any] = [:]
+        if let notifyOnConnect {
+            config.updateValue(notifyOnConnect ? 1 : 0, forKey: CBConnectPeripheralOptionNotifyOnConnectionKey)
+        }
+        if let notifyOnDisconnect {
+            config.updateValue(notifyOnDisconnect ? 1 : 0, forKey: CBConnectPeripheralOptionNotifyOnDisconnectionKey)
+        }
+        if let notifyOnPeripheralNotification {
+            config.updateValue(notifyOnPeripheralNotification ? 1 : 0, forKey: CBConnectPeripheralOptionNotifyOnNotificationKey)
+        }
+        if let enableTransportBridging {
+            config.updateValue(enableTransportBridging ? 1 : 0, forKey: CBConnectPeripheralOptionEnableTransportBridgingKey)
+        }
+        if let requireANCS {
+            config.updateValue(requireANCS ? 1 : 0, forKey: CBConnectPeripheralOptionRequiresANCS)
+        }
+        if let connectionDelay {
+            config.updateValue(connectionDelay, forKey: CBConnectPeripheralOptionStartDelayKey)
+        }
+        return config
+    }
+    
+    public init(notifyOnConnect: Bool? = nil,
+                notifyOnDisconnect: Bool? = nil,
+                notifyOnPeripheralNotification: Bool? = nil,
+                enableTransportBridging: Bool? = nil,
+                requireANCS: Bool? = nil,
+                connectionDelay: NSNumber? = nil) {
+        self.notifyOnConnect = notifyOnConnect
+        self.notifyOnDisconnect = notifyOnDisconnect
+        self.notifyOnPeripheralNotification = notifyOnPeripheralNotification
+        self.enableTransportBridging = enableTransportBridging
+        self.requireANCS = requireANCS
+        self.connectionDelay = connectionDelay
     }
 }
