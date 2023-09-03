@@ -15,7 +15,7 @@ public struct ABScanResult: @unchecked Sendable {
     
     public var localName: Any?          { advertisementData[CBAdvertisementDataLocalNameKey] }
     public var txPower: Any?            { advertisementData[CBAdvertisementDataTxPowerLevelKey] }
-    public var serviceUUIDs: Any?       { advertisementData[CBAdvertisementDataServiceUUIDsKey] }
+    public var serviceUUIDs: [CBUUID]   { advertisementData[CBAdvertisementDataServiceUUIDsKey] as? [CBUUID] ?? [] }
     public var serviceData: Any?        { advertisementData[CBAdvertisementDataServiceDataKey] }
     public var manufacturerData: Any?   { advertisementData[CBAdvertisementDataManufacturerDataKey] }
     public var timestamp: Any?          { advertisementData["kCBAdvDataTimestamp"] }
