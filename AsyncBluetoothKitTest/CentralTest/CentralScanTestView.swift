@@ -28,6 +28,6 @@ struct CentralScanTestView: View {
     }
     
     func generateDescription(_ scanRes: ABScanResult) -> String {
-        return "\(String(describing: scanRes.localName as? String ?? "Anonymous")) \(scanRes.rssi) \(String(describing: scanRes.serviceUUIDs ?? []))"
+        return "\(String(describing: scanRes.localName as? String ?? "Anonymous")) \(scanRes.rssi) \(String(describing: scanRes.serviceUUIDs))"
     }
 }

@@ -30,13 +30,15 @@ import AsyncBluetoothKit
             }
         }
     }
-    
+}
+
+extension CentralService {
     func startScan() {
         self.scanTask = Task {
             for await res in manager.scanForPeripherals(services: []) {
                 self.scanResult.append(res)
                 if let name = res.localName as? String {
-                    TestLog("\(name) \(String(describing: res.serviceUUIDs ?? []))")
+                    TestLog("\(name) \(String(describing: res.serviceUUIDs)) \(String(describing: res.serviceData))")
                 }
             }
         }
