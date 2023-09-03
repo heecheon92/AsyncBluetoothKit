@@ -11,6 +11,7 @@
 		4BAE056A2AA3457700F4C6FD /* ABScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE05692AA3457700F4C6FD /* ABScanResult.swift */; };
 		4BAE056D2AA34D4D00F4C6FD /* AsyncStream+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE056C2AA34D4D00F4C6FD /* AsyncStream+Extensions.swift */; };
 		4BAE056F2AA34D7000F4C6FD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE056E2AA34D7000F4C6FD /* Extensions.swift */; };
+		4BAE05732AA4980D00F4C6FD /* ABConnectionContinuation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE05722AA4980D00F4C6FD /* ABConnectionContinuation.swift */; };
 		4BE09BDA2A7201B200029C33 /* AsyncBluetoothKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = 4BE09BD92A7201B200029C33 /* AsyncBluetoothKit.docc */; };
 		4BE09BE62A7201B200029C33 /* AsyncBluetoothKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BE09BD82A7201B200029C33 /* AsyncBluetoothKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4BE09BF22A7204B300029C33 /* ABCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE09BF12A7204B300029C33 /* ABCentralManager.swift */; };
@@ -28,6 +29,7 @@
 		4BAE05692AA3457700F4C6FD /* ABScanResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABScanResult.swift; sourceTree = "<group>"; };
 		4BAE056C2AA34D4D00F4C6FD /* AsyncStream+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsyncStream+Extensions.swift"; sourceTree = "<group>"; };
 		4BAE056E2AA34D7000F4C6FD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4BAE05722AA4980D00F4C6FD /* ABConnectionContinuation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABConnectionContinuation.swift; sourceTree = "<group>"; };
 		4BE09BD52A7201B200029C33 /* AsyncBluetoothKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AsyncBluetoothKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BE09BD82A7201B200029C33 /* AsyncBluetoothKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsyncBluetoothKit.h; sourceTree = "<group>"; };
 		4BE09BD92A7201B200029C33 /* AsyncBluetoothKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = AsyncBluetoothKit.docc; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				4BE09C412A7543EC00029C33 /* ABCentralStateStream.swift */,
 				4BAE05672AA3351700F4C6FD /* ABScanStream.swift */,
 				4BAE05692AA3457700F4C6FD /* ABScanResult.swift */,
+				4BAE05722AA4980D00F4C6FD /* ABConnectionContinuation.swift */,
 			);
 			path = Central;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				4BAE056F2AA34D7000F4C6FD /* Extensions.swift in Sources */,
 				4BAE056D2AA34D4D00F4C6FD /* AsyncStream+Extensions.swift in Sources */,
 				4BAE05682AA3351700F4C6FD /* ABScanStream.swift in Sources */,
+				4BAE05732AA4980D00F4C6FD /* ABConnectionContinuation.swift in Sources */,
 				4BE09C422A7543EC00029C33 /* ABCentralStateStream.swift in Sources */,
 				4BE09BDA2A7201B200029C33 /* AsyncBluetoothKit.docc in Sources */,
 			);
