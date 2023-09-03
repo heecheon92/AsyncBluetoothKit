@@ -14,7 +14,18 @@ struct CentralScanTestView: View {
     
     var body: some View {
         List(Array(zip(bleService.scanResult.indices, bleService.scanResult)), id: \.0) { idx, result in
-            Text("\(generateDescription(result))")
+            Button(action: {
+                Task {
+                    do {
+                        let res = try await bleService.connect(result)
+                        TestLog("Connected Peripheral: \(res)")
+                    } catch {
+                        TestLog("Connection Failed : \(error)")
+                    }
+                }
+            }, label: {
+                Text("\(generateDescription(result))")
+            })
         }
         .navigationTitle("Scan Test")
         .ignoresSafeArea()

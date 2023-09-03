@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import AsyncBluetoothKit
+import CoreBluetooth
 
 @MainActor final class CentralService: ObservableObject {
     
@@ -49,5 +50,9 @@ extension CentralService {
         self.scanTask?.cancel()
         self.scanTask = nil
         self.scanResult.removeAll()
+    }
+    
+    func connect(_ r: ABScanResult) async throws -> CBPeripheral {
+        return try await self.manager.connect(peripheral: r.peripheral)
     }
 }
